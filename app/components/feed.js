@@ -32,6 +32,7 @@ export default class Feed extends React.Component {
   }
 
   render() {
+    //feeditem already has all the data in it. It maps each item to HTML.
     return (
       <div>
         <StatusUpdateEntry onPost={(postContents) => this.onPost(postContents)} />

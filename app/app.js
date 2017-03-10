@@ -35,6 +35,7 @@ class FeedPage extends React.Component {
 class App extends React.Component {
   render() {
     return (
+      // FeedPage=children
       <div>{this.props.children}</div>
     )
   }

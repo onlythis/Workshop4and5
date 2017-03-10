@@ -120,6 +120,7 @@ export function likeFeedItem(feedItemId, userId, cb) {
   feedItem.likeCounter.push(userId);
   writeDocument('feedItems', feedItem);
   // Return a resolved version of the likeCounter
+  //feedItem.likeCounter=[2,3,4], maps each to users.
   emulateServerReturn(feedItem.likeCounter.map((userId) => readDocument('users', userId)), cb);
 }
 

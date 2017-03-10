@@ -21,6 +21,7 @@ export default class StatusUpdateEntry extends React.Component {
     if (statusUpdateText !== "") {
       /* TODO: How do we send the post to the server + update the Feed? */
       // Reset status update.
+      //this onPost calls the onPost in feed.js in the HTML onPost is a prop of StatusUpdateEntry
       this.props.onPost(statusUpdateText);
       this.setState({value: ""});
     }
