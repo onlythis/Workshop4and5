@@ -2,7 +2,7 @@ import React from 'react';
 import StatusUpdate from './statusupdate';
 import CommentThread from './commentthread';
 import Comment from './comment';
-import {postComment, likeFeedItem, unlikeFeedItem} from '../server'
+import {postComment, likeFeedItem, unlikeFeedItem, likeComment} from '../server'
 
 export default class FeedItem extends React.Component {
   constructor(props) {
@@ -16,6 +16,10 @@ export default class FeedItem extends React.Component {
       // Update our state to trigger a re-render.
       this.setState(updatedFeedItem);
     });
+  }
+
+  handleLikeComment(commentIndex) {
+    likeComment(this.state._id, commentIndex, 4, (updatedFeedItem) => {this.setState(updatedFeedItem);});
   }
 
   /**
@@ -125,7 +129,8 @@ export default class FeedItem extends React.Component {
                 {data.comments.map((comment, i) => {
                   // i is comment's index in comments array
                   return (
-                    <Comment key={i} author={comment.author} postDate={comment.postDate}>{comment.contents}</Comment>
+                    <Comment key={i} index={i} author={comment.author} postDate={comment.postDate} likeCounter={comment.likeCounter}
+                      onLikeComment={(e) => this.handleLikeComment(e)}>{comment.contents}</Comment>
                   );
                 })}
               </CommentThread>

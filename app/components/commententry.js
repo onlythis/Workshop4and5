@@ -17,6 +17,7 @@ export default class CommentEntry extends React.Component {
       var comment = this.state.value.trim();
       if (comment !== "") {
         // Post comment
+        // this.state.value = string
         this.props.onPost(this.state.value);
         this.setState({ value: "" });
       }
